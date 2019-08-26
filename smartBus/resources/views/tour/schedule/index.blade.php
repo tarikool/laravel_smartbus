@@ -24,17 +24,17 @@
                     <tr>
                         <td class="serial">{{$i++}}</td>
                         <td> {{ $time->schedule ? date('h:s A', strtotime($time->schedule)) : ' ' }} </td>
-                        <td>
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                    Action <span class="caret"></span>
-                                </button>
-                                <ul class="dropdown-menu" role="menu">
-                                    {{--                                <li><a href="{{ route( 'stations.show', $station->id ) }}">view Station</a></li>--}}
-                                    <li class="divider"></li>
-                                </ul>
-                            </div>
-                        </td>
+{{--                        <td>--}}
+{{--                            <div class="btn-group">--}}
+{{--                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">--}}
+{{--                                    Action <span class="caret"></span>--}}
+{{--                                </button>--}}
+{{--                                <ul class="dropdown-menu" role="menu">--}}
+{{--                                    --}}{{--                                <li><a href="{{ route( 'stations.show', $station->id ) }}">view Station</a></li>--}}
+{{--                                    <li class="divider"></li>--}}
+{{--                                </ul>--}}
+{{--                            </div>--}}
+{{--                        </td>--}}
                     </tr>
                     </tbody>
                 @endforeach

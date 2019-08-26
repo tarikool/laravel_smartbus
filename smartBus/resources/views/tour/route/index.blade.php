@@ -44,7 +44,7 @@
                                 Action <span class="caret"></span>
                             </button>
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="{{ route( 'routes.show', $route->id ) }}">View Route</a></li>
+{{--                                <li><a href="{{ route( 'routes.show', $route->id ) }}">View Route</a></li>--}}
                                 <li><a href="{{route('routes.edit', $route->id )}}">Edit Route</a></li>
                                 <li class="divider"></li>
                             </ul>

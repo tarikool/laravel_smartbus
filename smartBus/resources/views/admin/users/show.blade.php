@@ -26,7 +26,7 @@
                 </div>
                 <div class="modal-body">
                     <img class="img-responsive" src="{{$user->photo ? $user->photo->file : 'http://placehold.it/400x400' }}" name="aboutme" width="120" height="140">
-                    <h3 class="media-heading">{{$user->name}} <small>{{ $user->role->name }}</small></h3>
+                    <h3 class="media-heading">{{$user->name}} <small>{{ $user->role ? $user->role->name : '' }}</small></h3>
                     <span><strong>Date:</strong></span>
                     <span class="label label-warning">{{$user->created_at->diffForHumans()}}</span>
                     <hr>
@@ -48,35 +48,5 @@
             </div>
         </div>
     </div>
-
-
-{{--    <div class="box box-primary">--}}
-{{--        <div class="box-body box-profile">--}}
-{{--            --}}{{--                <img class="profile-user-img img-responsive img-circle" src="../../dist/img/user4-128x128.jpg" alt="User profile picture">--}}
-{{--            <a href="#aboutModal" data-toggle="modal" data-target="#myModal">--}}
-{{--                <img class="profile-user-img img-responsive img-circle" src="{{$user->photo ? $user->photo->file : 'http://placehold.it/400x400' }}" name="aboutme" width="120" height="140">--}}
-{{--            </a>--}}
-{{--            <h3 class="profile-username text-center">{{ $user->name }}</h3>--}}
-{{--            <p class="text-muted text-center">Software Engineer</p>--}}
-
-{{--            <ul class="list-group list-group-unbordered">--}}
-{{--                <li class="list-group-item">--}}
-{{--                    <b>Followers</b> <a class="pull-right">1,322</a>--}}
-{{--                </li>--}}
-{{--                <li class="list-group-item">--}}
-{{--                    <b>Following</b> <a class="pull-right">543</a>--}}
-{{--                </li>--}}
-{{--                <li class="list-group-item">--}}
-{{--                    <b>Friends</b> <a class="pull-right">13,287</a>--}}
-{{--                </li>--}}
-{{--            </ul>--}}
-
-{{--            <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>--}}
-{{--        </div>--}}
-{{--        <!-- /.box-body -->--}}
-{{--    </div>--}}
-
-
-
 
 @endsection

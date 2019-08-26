@@ -38,8 +38,8 @@
                                 Action <span class="caret"></span>
                             </button>
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="{{ route( 'users.show', $user->id ) }}">view post</a></li>
-                                <li><a href="{{route('users.edit', $user->id )}}">Edit post</a></li>
+                                <li><a href="{{ route( 'users.show', $user->id ) }}">view profile</a></li>
+                                <li><a href="{{route('users.edit', $user->id )}}">Edit info</a></li>
                                 <li class="divider"></li>
                             </ul>
                         </div>

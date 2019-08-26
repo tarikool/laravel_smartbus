@@ -33,7 +33,7 @@
         <header class="main-header">
 
             <!-- Logo -->
-            <a href="{{ route('users.index') }}" class="logo">
+            <a href="/" class="logo">
                 <!-- mini logo for sidebar mini 50x50 pixels -->
                 <span class="logo-mini"><b>A</b>LT</span>
                 <!-- logo for regular state and mobile devices -->
@@ -65,7 +65,7 @@
                                     <img src="{{auth()->user()->photo ? auth()->user()->photo->file : 'http://placehold.it/400x400' }}" class="img-circle" alt="User Image">
 
                                     <p>
-                                        {{auth()->user()->name}} - {{auth()->user()->role->name}}
+                                        {{auth()->user()->name}} - {{isset(auth()->user()->role) ? auth()->user()->role->name : ''}}
                                         <small>Member since {{date(' M. Y', strtotime(auth()->user()->created_at))}}</small>
                                     </p>
                                 </li>
@@ -132,7 +132,7 @@
                         <ul class="treeview-menu">
                             <li><a href="{{ route('users.show', auth()->user()->id ) }}"><i class="fa fa-eye"></i> View Profile</a></li>
                             <li><a href="{{ route("users.edit", auth()->user()->id ) }}"><i class="fa fa-forward"></i> Update Profile</a></li>
-                            <li><a href="{{ route("users.edit", auth()->user()->id ) }}"><i class="fa fa-forward"></i> Change Password</a></li>
+{{--                            <li><a href="{{ route("users.edit", auth()->user()->id ) }}"><i class="fa fa-forward"></i> Change Password</a></li>--}}
                             <li><a href="{{ route('users.create') }}"><i class="fa fa-sign-out"></i> Logout</a></li>
                         </ul>
                     </li>

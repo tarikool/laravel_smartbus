@@ -18,7 +18,7 @@ class CreateBusesTable extends Migration
             $table->string('name');
             $table->string('license_number')->nullable();
             $table->integer('total_seat')->unsigned()->default(40);
-            $table->double('cost_per_seat')->unsigned()->nullable();
+            $table->double('cost_per_unit')->unsigned()->nullable();
             $table->integer('booked_seat')->unsigned()->default(0);
             $table->integer('paid')->unsigned()->default(0);
             $table->integer('driver_id')->index()->unsigned()->nullable();

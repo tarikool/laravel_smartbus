@@ -39,7 +39,7 @@
                             </button>
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="{{ route( 'drivers.edit', $driver->id ) }}">Edit</a></li>
-                                <li><a href="{{route('drivers.destroy', $driver->id )}}">Delete</a></li>
+{{--                                <li><a href="{{route('drivers.destroy', $driver->id )}}">Delete</a></li>--}}
                                 <li class="divider"></li>
                             </ul>
                         </div>
