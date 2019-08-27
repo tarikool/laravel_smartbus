@@ -17,7 +17,7 @@ class CreateBusTripsTable extends Migration
             $table->increments('id');
             $table->string('departure');
             $table->string('destination');
-            $table->integer('ticket_id')->nullable();
+            $table->string('ticket_id')->nullable();
             $table->string('no_of_ticket')->nullable();
             $table->double('price');
             $table->integer('payment_status')->default(0);

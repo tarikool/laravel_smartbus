@@ -8,92 +8,89 @@
 
     <div class="row">
         <div class="col-md-8">
-            <div id="map" style="width: 100%; height: 200px;"></div>
+            <div id="map" style="width: 100%; height: 250px;"></div>
         </div>
         <div class="col-md-4"></div>
     </div>
 
-    {!! Form::open(['method' => 'POST', 'action' => 'BusTripController@book' ]) !!}
+    {!! Form::open(['method' => 'GET', 'action' => 'BusTripController@book' ]) !!}
+    <div class="row">
+        <div class="card col-md-8">
+            <input type="hidden" name="destination" id="destination" value="{{$destination->id}}">
+            <div class="card-body card-block">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="departure">Departure</label>
+                            <small style="color:gray;">{{count($stations)<1 ? ' (Not Available) ' : '' }}</small>
+                            <select class="form-control select2 locations" name="departure" id="departure"
+                                    data-placeholder="Select Departure" style="width: 100%;">
+                                <option></option>
+                                @foreach( $stations as $station )
+                                    <option value="{{$station->id}}">{{isset($station->name) ? $station->name : ''}}</option>
+                                @endforeach
+                            </select>
+                            <p class="text-red">{{ ($errors->has('departure')) ? 'please select a station' : ''}}</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Destination</label>
+                            <select class="form-control select2" name="destination" disabled="disabled"
+                                    style="width: 100%;">
+                                <option selected="selected" value="{{$destination->id}}">{{$destination->name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="bus_id">Available Bus</label>
+                            <select class="form-control select2 locations" name="bus_id" id="bus"
+                                    data-placeholder="Choose a Bus" style="width: 100%;">
+                                <option></option>
+                                @foreach( $buses as $bus )
+                                    <option value="{{$bus->id}}">{{$bus->name}} -
+                                        at {{isset($bus->bus_time) ? date('h:s A', strtotime($bus->bus_time->schedule)) : ''}}</option>
+                                @endforeach
+                            </select>
+                            <p class="text-red">{{ ($errors->has('bus_id')) ? 'please select a bus' : ''}}</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="no_of_ticket">Ticket</label>
+                            <input type="number" class="form-control" id="no_of_ticket" name="no_of_ticket">
+                        </div>
+                        <p class="text-red">{{ ($errors->has('no_of_ticket')) ? $errors->first('no_of_ticket') : ''}}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="distance">Distance</label>
+                            <input type="text" class="form-control distance" name="distance">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="duration">Duration</label>
+                            <input type="text" class="form-control duration" name="duration">
+                        </div>
+                    </div>
+                </div>
 
-    <input type="hidden" name="destination" id="destination" value="{{$destination->id}}">
-
-    <div class="card col-md-8">
-        <div class="card-body card-block">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="departure">Departure</label>
-                        <small style="color:gray;">{{count($stations)<1 ? ' (Not Available) ' : '' }}</small>
-                        <select class="form-control select2 locations" name="departure" id="departure"
-                                data-placeholder="Select Departure" style="width: 100%;">
-                            <option></option>
-                            @foreach( $stations as $station )
-                                <option value="{{$station->id}}">{{isset($station->name) ? $station->name : ''}}</option>
-                            @endforeach
-                        </select>
-                        <p class="text-red">{{ ($errors->has('departure')) ? 'please select a station' : ''}}</p>
-                    </div>
+                <div class="form-group">
+                    <button type="submit" class="btn bg-navy">Next</button>
+                    <button type="button" onclick="window.location='{{ route("trip.check") }}'" class="btn bg-purple">Change
+                        Destination
+                    </button>
                 </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label>Destination</label>
-                        <select class="form-control select2" name="destination" disabled="disabled"
-                                style="width: 100%;">
-                            <option selected="selected" value="{{$destination->id}}">{{$destination->name}}</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="bus_id">Available Bus</label>
-                        <select class="form-control select2 locations" name="bus_id" id="bus"
-                                data-placeholder="Choose a Bus" style="width: 100%;">
-                            <option></option>
-                            @foreach( $buses as $bus )
-                                <option value="{{$bus->id}}">{{$bus->name}} -
-                                    at {{isset($bus->bus_time) ? date('h:s A', strtotime($bus->bus_time->schedule)) : ''}}</option>
-                            @endforeach
-                        </select>
-                        <p class="text-red">{{ ($errors->has('bus_id')) ? 'please select a bus' : ''}}</p>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="ticket">Ticket</label>
-                        <input type="number" class="form-control" id="ticket" name="ticket">
-                    </div>
-                    <p class="text-red">{{ ($errors->has('ticket')) ? $errors->first('ticket') : ''}}</p>
-                </div>
-            </div>
-            <div class="form-group">
-                <button type="submit" class="btn bg-navy">Next</button>
-                <button type="button" onclick="window.location='{{ route("trip.check") }}'" class="btn bg-purple">Change
-                    Destination
-                </button>
             </div>
         </div>
     </div>
-    <div class="col-md-4">
-        {{--        <div id="map" style="width: 800px;height: 500px;">--}}
-        {{--        </div>--}}
-
-    </div>
     {!! Form::close() !!}
-
-
-
-
-    {{--    <div class="row">--}}
-    {{--        <div class="col-md-6">--}}
-    {{--            <div id="map"></div>--}}
-    {{--            <div id="map" style="width: 800px; height:500px;"></div>--}}
-    {{--            <script async defer--}}
-    {{--                    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkUOdZ5y7hMm0yrcCQoCvLwzdM6M8s5qk&callback=initMap">--}}
-    {{--            </script>--}}
-    {{--        </div>--}}
-    {{--    </div>--}}
 
 
 @endsection
@@ -220,6 +217,10 @@
 // console.log(response.rows[0]);
                     var google_distance=response.rows[0].elements[0].distance.text;
                     var google_duration=response.rows[0].elements[0].duration.text;
+
+                    $('.distance').val(google_distance);
+                    $('.duration').val(google_duration);
+
                     console.log(google_distance)
                     console.log(google_duration)
                 }

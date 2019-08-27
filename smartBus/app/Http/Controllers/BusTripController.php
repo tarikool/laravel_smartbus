@@ -57,11 +57,13 @@ class BusTripController extends Controller
 
     public function book( TripRequest $request)
     {
+
+        $distance = preg_replace('/[^0-9\.]/', "", $request->distance);
+
         $user = Auth::user();
         $input = $request->all();
         $bus = Bus::find( $input['bus_id']);
-        $input['total'] = ($bus->cost_per_seat)*$input['ticket'];
-
+        $input['total'] = ($bus->cost_per_unit)*$input['no_of_ticket']*$distance;
         $stations = BusStation::all();
         return view('tour.trip.book', compact('input', 'stations','user', 'bus'));
     }
@@ -69,7 +71,7 @@ class BusTripController extends Controller
 
 
 
-    public function store( TripRequest $request)
+    public function store( Request $request)
     {
 
         $input = $request->all();
@@ -77,7 +79,7 @@ class BusTripController extends Controller
         $input['payment_status']=0;
         BusTrip::create($input);
         $request->session()->flash('booked', 'Your Ticket has been Booked. Please, Pay Quickly');
-        return redirect('bus/trip/create');
+        return redirect('trip/check');
     }
 
 

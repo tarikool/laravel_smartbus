@@ -16,7 +16,7 @@
     <input type="hidden" name="user_id" value="{{$user->id}}">
     <input type="hidden" name="destination" value="{{$input['destination']}}">
     <input type="hidden" name="departure" value="{{$input['departure']}}">
-    <input type="hidden" name="ticket" value="{{$input['ticket']}}">
+    <input type="hidden" name="no_of_ticket" value="{{$input['no_of_ticket']}}">
     <input type="hidden" name="price" value="{{$input['total']}}">
 
 
@@ -53,14 +53,14 @@
                     <li class="list-group-item">
                         <div class="row">
                             <div class="col-md-6">
-                                <b>Ticket</b> <a class="pull-right">{{$input['ticket']}}</a>
+                                <b>Ticket</b> <a class="pull-right">{{$input['no_of_ticket']}}</a>
                             </div>
                         </div>
                     </li>
                     <li class="list-group-item">
                         <div class="row">
                             <div class="col-md-6">
-                                <b class="text-center">Total</b> <a class="pull-right">{{$input['total']}}</a>
+                                <b class="text-center">Total</b> <a class="pull-right">{{$input['total']}} tk.</a>
                             </div>
                         </div>
                     </li>

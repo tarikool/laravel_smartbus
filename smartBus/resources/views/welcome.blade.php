@@ -264,14 +264,14 @@
                     <div id="loginmessage"></div>
                     <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                         <label for="email" class="col-md-4 control-label">E-Mail Address</label>
-                        <div class="col-md-6">
+                        <div class="col-md-10">
                             <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
                             <p>{{ ($errors->has('email')) ? $errors->first('email') : ''}}</p>
                         </div>
                     </div>
                     <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                         <label for="password" class="col-md-4 control-label">Password</label>
-                        <div class="col-md-6">
+                        <div class="col-md-10">
                             <input id="password" type="password" class="form-control" name="password" required>
                             <p class="text-red">{{ ($errors->has('password')) ? $errors->first('password') : ''}}</p>
                         </div>
@@ -302,7 +302,7 @@
                     <div id="signupmessage"></div>
                     <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                         <label for="name" class="col-md-4 control-label">Name</label>
-                        <div class="col-md-8">
+                        <div class="col-md-10">
                             <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
                             <p>{{ ($errors->has('name')) ? $errors->first('name') : ''}}</p>
                         </div>
@@ -310,21 +310,21 @@
                     <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                         <label for="email" class="col-md-4 control-label">E-Mail Address</label>
 
-                        <div class="col-md-8">
+                        <div class="col-md-10">
                             <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
                             <p>{{ ($errors->has('email')) ? $errors->first('email') : ''}}</p>
                         </div>
                     </div>
                     <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                         <label for="password" class="col-md-4 control-label">Password</label>
-                        <div class="col-md-8">
+                        <div class="col-md-10">
                             <input id="password" type="password" class="form-control" name="password" required>
                             <p>{{ ($errors->has('password')) ? $errors->first('password') : ''}}</p>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
-                        <div class="col-md-8">
+                        <div class="col-md-10">
                             <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                         </div>
                     </div>

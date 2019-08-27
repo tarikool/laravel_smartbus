@@ -24,7 +24,7 @@
 
 <div id="map"></div>
 <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB5WQW9fdx6uzx85zLVwfq7mmHDTRmIYi8&libraries=places&callback=initMap">
+        src="https://maps.googleapis.com/maps/api/js?key=">
 </script>
 
 <script>

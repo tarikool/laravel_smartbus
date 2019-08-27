@@ -26,7 +26,7 @@ class TripRequest extends FormRequest
         return [
             'departure' => 'required',
             'bus_id' => 'required',
-            'ticket' => 'required|numeric|max:10',
+            'no_of_ticket' => 'required|numeric|max:10',
         ];
     }
 }

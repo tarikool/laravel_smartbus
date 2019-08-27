@@ -28,7 +28,7 @@ class BusRequest extends FormRequest
             'license_number' => 'required',
             'driver_id' => 'required',
             'total_seat' => 'required|numeric|max:70',
-            'cost_per_seat' => 'required',
+            'cost_per_unit' => 'required',
             'schedule_id' => 'required',
 
         ];

@@ -33,7 +33,7 @@
                     <td> {{ $bus->name }} </td>
                     <td> {{ $bus->driver ? $bus->driver->name : '' }} </td>
                     <td> {{ $bus->route->name }} </td>
-                    <td> {{ $bus->cost_per_seat }} </td>
+                    <td> {{ $bus->cost_per_unit }} </td>
                     <td> {{ $bus->total_seat }} </td>
                     <td> {{ $bus->booked_seat }} </td>
                     <td> {{ $bus->license_number }} </td>
@@ -46,7 +46,7 @@
                                 <span class="sr-only">Toggle Dropdown</span>
                             </button>
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="{{ route( 'bus.show', $bus->id ) }}">view Bus</a></li>
+{{--                                <li><a href="{{ route( 'bus.show', $bus->id ) }}">view Bus</a></li>--}}
                                 <li><a href="{{route('bus.edit', $bus->id )}}">Edit Bus</a></li>
                                 <li class="divider"></li>
                             </ul>

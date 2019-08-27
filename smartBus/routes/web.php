@@ -67,30 +67,10 @@ Route::group(['middleware' => 'admin'], function() {
 //    Route::get( 'trip/station', ['as' => 'trip.station', 'uses' => 'BusTripController@station'] );
     Route::get( 'trip/check', ['as' => 'trip.check', 'uses' => 'BusTripController@check'] );
     Route::get( 'trip/map', ['as' => 'trip.map', 'uses' => 'BusTripController@map'] );
-    Route::post( 'user/book', ['as' => 'user.book', 'uses' => 'BusTripController@book'] );
+    Route::get( 'trip/book', ['as' => 'trip.book', 'uses' => 'BusTripController@book'] );
 
 });
 
-
-
-Route::get('/add', function () {
-
-    DB::table('bus_stations')->insert([
-       ['name' => 'Nillkhet', 'lat' => '124235.435', 'long' => '345.235', 'opening_hour' => '10:25:00','closing_hour' => '23:25:00', 'address' => 'Dhaka science lab' ],
-       ['name' => 'Bonani', 'lat' => '798789.435', 'long' => '334545.235', 'opening_hour' => '10:25:00','closing_hour' => '23:25:00', 'address' => 'Dhaka Dhanmondi' ],
-       ['name' => 'kuril', 'lat' => '798789.435', 'long' => '334545.235', 'opening_hour' => '10:25:00','closing_hour' => '23:25:00', 'address' => 'Dhaka Dhanmondi' ],
-       ['name' => 'Bissho Road', 'lat' => '23789.435', 'long' => '67845.235', 'opening_hour' => '1:25:00','closing_hour' => '3:25:00', 'address' => 'Dhaka kolabagan' ],
-       ['name' => 'Notunbazar', 'lat' => '23789.435', 'long' => '67845.235', 'opening_hour' => '1:25:00','closing_hour' => '3:25:00', 'address' => 'Dhaka kolabagan' ],
-       ['name' => 'Rumpura', 'lat' => '23789.435', 'long' => '67845.235', 'opening_hour' => '1:25:00','closing_hour' => '3:25:00', 'address' => 'Dhaka kolabagan' ],
-       ['name' => 'Badda', 'lat' => '23789.435', 'long' => '67845.235', 'opening_hour' => '1:25:00','closing_hour' => '3:25:00', 'address' => 'Dhaka kolabagan' ],
-       ['name' => 'Malibug', 'lat' => '23789.435', 'long' => '67845.235', 'opening_hour' => '1:25:00','closing_hour' => '3:25:00', 'address' => 'Dhaka kolabagan' ],
-       ['name' => 'Mouchak', 'lat' => '23789.435', 'long' => '67845.235', 'opening_hour' => '1:25:00','closing_hour' => '3:25:00', 'address' => 'Dhaka kolabagan' ],
-       ['name' => 'Hatirjhil', 'lat' => '23789.435', 'long' => '67845.235', 'opening_hour' => '1:25:00','closing_hour' => '3:25:00', 'address' => 'Dhaka kolabagan' ]
-    ]);
-
-    return redirect('bus/stations');
-
-});
 
 
 

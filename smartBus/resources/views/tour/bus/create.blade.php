@@ -61,9 +61,9 @@
             </div>
             <div class="col-md-4">
                 <div class="form-group">
-                    <label for="cost_per_seat">Cost Per Seat</label>
-                    <input type="number" class="form-control" id="cost_per_seat" name="cost_per_seat">
-                    <p class="text-red">{{ ($errors->has('cost_per_seat')) ? $errors->first('cost_per_seat') : ''}}</p>
+                    <label for="cost_per_unit">Cost Per Unit</label>
+                    <input type="number" class="form-control" id="cost_per_unit" name="cost_per_unit">
+                    <p class="text-red">{{ ($errors->has('cost_per_unit')) ? $errors->first('cost_per_unit') : ''}}</p>
                 </div>
             </div>
             <div class="col-md-4">
