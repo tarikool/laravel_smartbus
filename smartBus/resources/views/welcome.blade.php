@@ -62,9 +62,12 @@
 
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav ml-auto">
-{{--            <li class="nav-item">--}}
-{{--                <a class="nav-link page-scroll" href="#header">HOME <span class="sr-only">(current)</span></a>--}}
-{{--            </li>--}}
+
+            @if(Auth::user())
+                <li class="nav-item">
+                    <a class="nav-link page-scroll" href="{{route('users.index')}}">HOME <span class="sr-only">(current)</span></a>
+                </li>
+            @endif
 
 {{--            <li class="nav-item">--}}
 {{--                <a class="nav-link page-scroll" href="#contact">CONTACT</a>--}}

@@ -1,4 +1,5 @@
-
+email : admin@email.com
+pass : A12345
 1. download the zip file and put unzipped files into a new folder inside htdocs. [ eg. htdocs/smartbus/{your files}]
 2. create a database named "project_smartbus".
 3. to see the map features import the db.sql after creating the database.

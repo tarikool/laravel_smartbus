@@ -28,7 +28,7 @@
                     <img class="img-responsive" src="{{$user->photo ? $user->photo->file : 'http://placehold.it/400x400' }}" name="aboutme" width="120" height="140">
                     <h3 class="media-heading">{{$user->name}} <small>{{ $user->role ? $user->role->name : '' }}</small></h3>
                     <span><strong>Date:</strong></span>
-                    <span class="label label-warning">{{$user->created_at->diffForHumans()}}</span>
+                    <span class="label label-warning">{{$user->created_at ? $user->created_at->diffForHumans() : ''}}</span>
                     <hr>
                     <p class="text-left"><strong>Contact Info: </strong>
                     <br>
@@ -36,7 +36,7 @@
                         Phone: <span class="text-aqua">{{ $user->phone_number ? $user->phone_number : '' }}</span> <br>
                         City: <span class="text-aqua">{{ $user->city ? $user->city : '' }}</span>
                     <hr>
-                    <p class="text-left"><strong>About: </strong><br>{{$user->about}}</p>
+                    <p class="text-left"><strong>About: </strong><br>{{$user->about ? $user->about : ''}}</p>
                     <br>
                     <br>
                 </div>
