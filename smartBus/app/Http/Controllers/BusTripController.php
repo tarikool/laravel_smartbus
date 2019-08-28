@@ -31,8 +31,16 @@ class BusTripController extends Controller
             $trips = $user->trip;
         }
 //        return $user;
-//        return view('tour.trip.map', compact('stations'));
         return view('tour.trip.index', compact('trips'));
+    }
+
+
+    public function frontend()
+    {
+        $stations = BusStation::all();
+
+        return view('tour.trip.map', compact('stations'));
+
     }
 
 
@@ -97,7 +105,6 @@ class BusTripController extends Controller
     {
 //        return $request->all();
         $station = BusStation::find( $request->id );
-
         return $station;
     }
 

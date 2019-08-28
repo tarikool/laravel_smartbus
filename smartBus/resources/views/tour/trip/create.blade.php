@@ -8,7 +8,7 @@
 
     <div class="row">
         <div class="col-md-8">
-            <div id="map" style="width: 100%; height: 250px;"></div>
+            <div id="map" style="width: 100%; height: 350px;"></div>
         </div>
         <div class="col-md-4"></div>
     </div>
@@ -174,7 +174,7 @@
                 '</div>';
 
             var map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 12,
+                zoom: 11,
                 center: {lat: 23.8151, lng: 90.4255}
             });
             var depInfowindow = new google.maps.InfoWindow({

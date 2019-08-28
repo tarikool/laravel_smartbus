@@ -53,6 +53,7 @@ Route::get('/backup', function (){
 });
 
 
+Route::get( 'trip/frontend', ['as' => 'trip.frontend', 'uses' => 'BusTripController@frontend'] );
 Route::group(['middleware' => 'admin'], function() {
 
     Route::resource('admin/users', 'AdminUsersController');

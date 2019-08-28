@@ -1,10 +1,14 @@
 email : admin1@email.com
 pass : A12345
 1. download the zip file and put unzipped files into a new folder inside htdocs. [ eg. htdocs/smartbus/{your files}]
-2. create a database named "project_smartbus".
-3. to see the map features import the db.sql after creating the database.
-4. for fresh install open cmd in "smartbus" folder and run "php artisan migrate" [ N.B. You have to provide the latitude and longitude for getting exact result ]
-5. from your browser go to "localhost/smartbus/public"
+2. open cmd in smartbus folder and run "composer update"
+3. create a database named "project_smartbus".
+4. import db.sql or run command "php artisan migrate".
+5. for fresh start open cmd in "smartbus" folder and run "php artisan migrate" [ N.B. You have to provide the latitude and longitude if using migrate ]
+6. after doing all of the above run "php artisan serve"
+
+
+ 
 
 Features
 1. only user with "Administrator" role can access the dashboard. // For testing purpose user with id no 1 is assigned to "Administrator"
@@ -27,5 +31,5 @@ Features to be included:
 		3. Implementing Razorpay for payment gateway.
 		
 
-please provide the gmap api key in resources/views/layouts/master.blade.php at line 357
+please provide the gmap api key in resources/views/layouts/master.blade.php at line 362
 

@@ -101,6 +101,8 @@
 <!-- end of navbar -->
 
 
+
+
 <!-- Header -->
 <header id="header" class="header">
     <div class="header-content">
@@ -115,10 +117,16 @@
 
                     <!--Sign up button-->
                     @if(Auth::guest())
-                        <?='<button type="button" class="btn btn-lg btn-outline-info signupPopup" data-toggle="modal" data-target="#signupModal">Sign up-It\'s free</button>';?>
+                        <?='<button type="button" class="btn btn-lg btn-outline-info signupPopup" data-toggle="modal" data-target="#signupModal" style="margin-bottom: 26px;">Sign up-It\'s free</button>';?>
                     @endif
                 </div>
             </div><!-- end of row -->
+            <div class="col-md-8">
+                <div id="frontendMap" style="width: 100%; height: 350px; margin-left: 19%;"></div>
+            </div>
+
+
+
         </div> <!-- end of container -->
     </div> <!-- end of header-content -->
 </header> <!-- end of header -->
@@ -431,5 +439,29 @@
 <script src="{{ asset('assets/frontend/js/morphext.min.js') }}"></script> <!-- Morphtext rotating text in the header -->
 <script src="{{ asset('assets/frontend/js/validator.min.js') }}"></script> <!-- Validator.js - Bootstrap plugin that validates forms -->
 <script src="{{ asset('assets/frontend/js/scripts.js')}}"></script> <!-- Custom scripts -->
+<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places&callback=initMap"></script>
+
+<script>
+    initMap();
+    $(function () {
+        $(window).on('load', function () {
+            initMap();
+        })
+    })
+
+    function initMap() {
+        var depLatLng = {lat: 23.756191, lng: 90.375571};
+        var desLatLng = {lat: 23.773077, lng: 90.367489};
+
+        console.log(depLatLng)
+        console.log(desLatLng)
+
+        var map = new google.maps.Map(document.getElementById('frontendMap'), {
+            zoom: 11,
+            center: {lat: 23.8151, lng: 90.4255}
+        });
+
+    }
+</script>
 </body>
 </html>
