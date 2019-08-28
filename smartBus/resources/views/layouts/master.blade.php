@@ -202,7 +202,7 @@
                             <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
                         </a>
                         <ul class="treeview-menu">
-{{--                            <li><a href="{{ route('trip.create') }}"><i class="fa fa-square"></i> Add Trip</a></li>--}}
+                            <li><a href="{{ route('trip.index') }}"><i class="fa fa-square"></i> All Trip</a></li>
                             <li><a href="{{ route('trip.check') }}"><i class="fa fa-square"></i> Add Trip</a></li>
                         </ul>
                     </li>
@@ -344,6 +344,11 @@
 <script src="{{url('local/bower_components/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js') }}"></script>
 <!-- bootstrap time picker -->
 <script src="{{url('local/plugins/timepicker/bootstrap-timepicker.min.js') }}"></script>
+
+<!-- DataTables -->
+<script src="{{url('local/bower_components/datatables.net/js/jquery.dataTables.min.js')}}"></script>
+<script src="{{url('local/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script>
+
 <!-- SlimScroll -->
 <script src="{{url('local/bower_components/jquery-slimscroll/jquery.slimscroll.min.js') }}"></script>
 <!-- iCheck 1.0.1 -->
@@ -354,7 +359,7 @@
 <script src="{{url('local/dist/js/adminlte.min.js') }}"></script>
 <script src="{{url('local/dist/js/main.js') }}"></script>
 <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=?????&libraries=places">
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB5WQW9fdx6uzx85zLVwfq7mmHDTRmIYi8&libraries=places">
 </script>
 @yield('scripts')
 

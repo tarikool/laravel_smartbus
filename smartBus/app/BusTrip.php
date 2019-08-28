@@ -13,5 +13,27 @@ class BusTrip extends Model
     ];
 
 
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
+
+    public function bus()
+    {
+        return $this->belongsTo('App\Bus');
+    }
+
+    public function des_station()
+    {
+        return $this->belongsTo('App\BusStation', 'destination');
+    }
+
+
+    public function dep_station()
+    {
+        return $this->belongsTo('App\BusStation', 'departure');
+    }
+
+
 
 }

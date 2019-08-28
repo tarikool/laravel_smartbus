@@ -41,6 +41,12 @@ class User extends Authenticatable
         return $this->belongsTo('App\Photo');
     }
 
+    public function trip()
+    {
+        return $this->hasMany('App\BusTrip');
+    }
+
+
 
     public function isAdmin()
     {

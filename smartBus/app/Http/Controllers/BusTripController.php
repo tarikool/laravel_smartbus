@@ -20,9 +20,19 @@ class BusTripController extends Controller
      */
     public function index()
     {
-//        return 'work';
+        $user = Auth::user();
 
-        return view('tour.trip.map');
+//        $trips = BusTrip::find(1);
+//        return $trips->station->photo;
+
+        if ( $user->isAdmin() ){
+            $trips = BusTrip::all();
+        }else{
+            $trips = $user->trip;
+        }
+//        return $user;
+//        return view('tour.trip.map', compact('stations'));
+        return view('tour.trip.index', compact('trips'));
     }
 
 
@@ -79,7 +89,7 @@ class BusTripController extends Controller
         $input['payment_status']=0;
         BusTrip::create($input);
         $request->session()->flash('booked', 'Your Ticket has been Booked. Please, Pay Quickly');
-        return redirect('trip/check');
+        return redirect('bus/trip');
     }
 
 
