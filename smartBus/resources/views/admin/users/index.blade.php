@@ -32,18 +32,18 @@
                     <td> {{ $user->name }} </td>
                     <td>  <span class="name">{{ $user->role ? $user->role->name : 'No Role' }}</span> </td>
                     <td> <span class="product">{{ $user->email }}</span> </td>
-                    <td>
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                Action <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="{{ route( 'users.show', $user->id ) }}">view profile</a></li>
-                                <li><a href="{{route('users.edit', $user->id )}}">Edit info</a></li>
-                                <li class="divider"></li>
-                            </ul>
-                        </div>
-                    </td>
+{{--                    <td>--}}
+{{--                        <div class="btn-group">--}}
+{{--                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">--}}
+{{--                                Action <span class="caret"></span>--}}
+{{--                            </button>--}}
+{{--                            <ul class="dropdown-menu" role="menu">--}}
+{{--                                <li><a href="{{ route( 'users.show', $user->id ) }}">view profile</a></li>--}}
+{{--                                <li><a href="{{route('users.edit', $user->id )}}">Edit info</a></li>--}}
+{{--                                <li class="divider"></li>--}}
+{{--                            </ul>--}}
+{{--                        </div>--}}
+{{--                    </td>--}}
                 </tr>
                 </tbody>
             @endforeach

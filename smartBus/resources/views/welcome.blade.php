@@ -63,9 +63,9 @@
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav ml-auto">
 
-            @if(Auth::user())
+            @if( auth()->user() )
                 <li class="nav-item">
-                    <a class="nav-link page-scroll" href="{{route('users.index')}}">HOME <span class="sr-only">(current)</span></a>
+                    <a class="nav-link page-scroll" href="{{route('user.show', auth()->user()->id )}}">HOME <span class="sr-only">(current)</span></a>
                 </li>
             @endif
 
@@ -91,7 +91,7 @@
                             {{ csrf_field() }}
                         </form>
                         <div class="dropdown-items-divide-hr"></div>
-                        <a class="dropdown-item" href="{{ route('users.show', auth()->user()->id ) }}"><span class="item-text">Your Profile</span></a>
+                        <a class="dropdown-item" href="{{route('user.show', auth()->user()->id )}}"><span class="item-text">Your Profile</span></a>
                     </div>
                 </li>
             @endif
@@ -102,11 +102,14 @@
 
 
 
-
 <!-- Header -->
 <header id="header" class="header">
     <div class="header-content">
         <div class="container">
+            <h1 class="text-center">
+                @include('includes.notifications')
+            </h1>
+
             <div class="row">
                 <div class="col-md-3"></div>
                 <div class="col-md-6 col-md-offset-3">
@@ -261,7 +264,7 @@
 
     <div class="modal" id="loginModal" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog">
-            <div class="modal-content" style="background-color: yellowgreen;">
+            <div class="modal-content">
                 <div class="modal-header">
                     <h4 id="myModalLabel" class="modal-title">
                         Login
@@ -304,9 +307,9 @@
     {{ csrf_field() }}
     <div class="modal" id="signupModal" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog">
-            <div class="modal-content" style="background-color: yellowgreen;">
+            <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title" style="color: slategray;">Sign Up</h4>
+                    <h4 class="modal-title" >Sign Up</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body" style="color: aliceblue;">
@@ -439,7 +442,7 @@
 <script src="{{ asset('assets/frontend/js/morphext.min.js') }}"></script> <!-- Morphtext rotating text in the header -->
 <script src="{{ asset('assets/frontend/js/validator.min.js') }}"></script> <!-- Validator.js - Bootstrap plugin that validates forms -->
 <script src="{{ asset('assets/frontend/js/scripts.js')}}"></script> <!-- Custom scripts -->
-<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places&callback=initMap"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB5WQW9fdx6uzx85zLVwfq7mmHDTRmIYi8&libraries=places&callback=initMap"></script>
 
 <script>
     initMap();

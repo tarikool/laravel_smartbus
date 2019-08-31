@@ -63,6 +63,25 @@ class User extends Authenticatable
     }
 
 
+    public function isUser()
+    {
+        if ( $this->role->name == 'User'){
+            return true;
+        }
+
+        return false;
+    }
+
+
+    public function isDriver()
+    {
+        if ( $this->role->name == 'Driver' ) {
+            return true;
+        }
+        return false;
+    }
+
+
 
 
 

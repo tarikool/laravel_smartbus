@@ -130,82 +130,95 @@
                             <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="{{ route('users.show', auth()->user()->id ) }}"><i class="fa fa-eye"></i> View Profile</a></li>
-                            <li><a href="{{ route("users.edit", auth()->user()->id ) }}"><i class="fa fa-forward"></i> Update Profile</a></li>
+                            <li><a href="{{ route('user.show', auth()->user()->id ) }}"><i class="fa fa-eye"></i> View Profile</a></li>
+                            <li><a href="{{ route("user.edit", auth()->user()->id ) }}"><i class="fa fa-forward"></i> Update Profile</a></li>
 {{--                            <li><a href="{{ route("users.edit", auth()->user()->id ) }}"><i class="fa fa-forward"></i> Change Password</a></li>--}}
-                            <li><a href="{{ route('users.create') }}"><i class="fa fa-sign-out"></i> Logout</a></li>
+                            <li>
+                                <a href="{{ route('logout') }}"
+                                   onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                    <i class="fa fa-sign-out"></i>Logout
+                                </a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
+                            </li>
                         </ul>
                     </li>
-                    <li class="treeview">
-                        <a href="#">
-                            <i class="fa fa-group"></i> <span>Users</span>
-                            <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="{{ route('users.index') }}"><i class="fa fa-star"></i> All Users</a></li>
-                            <li><a href="{{ route('users.create') }}"><i class="fa fa-user-plus"></i> Create User</a></li>
-                        </ul>
-                    </li>
-                    <li class="treeview">
-                        <a href="#">
-                            <i class="fa fa-cab"></i> <span>Drivers</span>
-                            <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="{{ route('drivers.index') }}"><i class="fa fa-star"></i> All Drivers</a></li>
-{{--                            <li><a href="{{ route('drivers.create') }}"><i class="fa fa-user-plus"></i> Create Driver</a></li>--}}
-                        </ul>
-                    </li>
-                    <li class="treeview">
-                        <a href="#">
-                            <i class="fa fa-hdd-o"></i> <span>Timetable</span>
-                            <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="{{ route('schedule.index') }}"><i class="fa fa-star"></i> All Schedule</a></li>
-                            <li><a href="{{ route('schedule.create') }}"><i class="fa fa-clock-o"></i> Add Schedule</a></li>
-                        </ul>
-                    </li>
-                    <li class="treeview">
-                        <a href="#">
-                            <i class="fa fa-subway"></i> <span>Route</span>
-                            <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="{{ route('routes.index') }}"><i class="fa fa-forward"></i> All Routes</a></li>
-                            <li><a href="{{ route('routes.create') }}"><i class="fa fa-plus-square-o"></i> Add Route</a></li>
-                        </ul>
-                    </li>
-                    <li class="treeview">
-                        <a href="#">
-                            <i class="fa fa-simplybuilt"></i> <span>Station</span>
-                            <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="{{ route('stations.index') }}"><i class="fa fa-forward"></i> All Stations</a></li>
-                            <li><a href="{{ route('stations.create') }}"><i class="fa fa-plus-square-o"></i> Add Station</a></li>
-                        </ul>
-                    </li>
-                    <li class="treeview">
-                        <a href="#">
-                            <i class="fa fa-bus"></i> <span>Bus</span>
-                            <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="{{ route('bus.index') }}"><i class="fa fa-forward"></i> All Bus</a></li>
-                            <li><a href="{{ route('bus.check') }}"><i class="fa fa-plus-square-o"></i> Add Bus</a></li>
-                        </ul>
-                    </li>
-                    <li class="treeview">
-                        <a href="#">
-                            <i class="fa fa-cc-amex"></i> <span>Trip</span>
-                            <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="{{ route('trip.index') }}"><i class="fa fa-square"></i> All Trip</a></li>
-                            <li><a href="{{ route('trip.check') }}"><i class="fa fa-square"></i> Add Trip</a></li>
-                        </ul>
-                    </li>
+                    @if(Auth::user()->isAdmin())
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-group"></i> <span>Users</span>
+                                <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="{{ route('users.index') }}"><i class="fa fa-star"></i> All Users</a></li>
+                                <li><a href="{{ route('users.create') }}"><i class="fa fa-user-plus"></i> Create User</a></li>
+                            </ul>
+                        </li>
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-cab"></i> <span>Drivers</span>
+                                <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="{{ route('drivers.index') }}"><i class="fa fa-star"></i> All Drivers</a></li>
+                                {{--                            <li><a href="{{ route('drivers.create') }}"><i class="fa fa-user-plus"></i> Create Driver</a></li>--}}
+                            </ul>
+                        </li>
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-hdd-o"></i> <span>Timetable</span>
+                                <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="{{ route('schedule.index') }}"><i class="fa fa-star"></i> All Schedule</a></li>
+                                <li><a href="{{ route('schedule.create') }}"><i class="fa fa-clock-o"></i> Add Schedule</a></li>
+                            </ul>
+                        </li>
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-subway"></i> <span>Route</span>
+                                <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="{{ route('routes.index') }}"><i class="fa fa-forward"></i> All Routes</a></li>
+                                <li><a href="{{ route('routes.create') }}"><i class="fa fa-plus-square-o"></i> Add Route</a></li>
+                            </ul>
+                        </li>
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-simplybuilt"></i> <span>Station</span>
+                                <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="{{ route('stations.index') }}"><i class="fa fa-forward"></i> All Stations</a></li>
+                                <li><a href="{{ route('stations.create') }}"><i class="fa fa-plus-square-o"></i> Add Station</a></li>
+                            </ul>
+                        </li>
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-bus"></i> <span>Bus</span>
+                                <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="{{ route('bus.index') }}"><i class="fa fa-forward"></i> All Bus</a></li>
+                                <li><a href="{{ route('bus.check') }}"><i class="fa fa-plus-square-o"></i> Add Bus</a></li>
+                            </ul>
+                        </li>
+                    @endif
+
+                    @if( Auth::user()->isUser() )
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-cc-amex"></i> <span>Trip</span>
+                                <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="{{ route('trip.index') }}"><i class="fa fa-square"></i> All Trip</a></li>
+                                <li><a href="{{ route('trip.check') }}"><i class="fa fa-square"></i> Add Trip</a></li>
+                            </ul>
+                        </li>
+                    @endif
 
 
                 </ul>
@@ -359,7 +372,7 @@
 <script src="{{url('local/dist/js/adminlte.min.js') }}"></script>
 <script src="{{url('local/dist/js/main.js') }}"></script>
 <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB5WQW9fdx6uzx85zLVwfq7mmHDTRmIYi8&libraries=places">
 </script>
 @yield('scripts')
 

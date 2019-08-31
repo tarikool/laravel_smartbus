@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserRequest;
+use App\Photo;
+use App\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -45,7 +48,8 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        return 'its working';
+        $user = User::findOrFail($id);
+        return view('profile.show', compact('user'));
     }
 
     /**
@@ -56,19 +60,55 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::findOrFail($id);
+        return view('profile.edit', compact('user'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function update( UserRequest $request, $id)
     {
-        //
+
+        $user = User::findOrFail( $id );
+        $photo_ID = $user->photo_id;
+        $userName = $user->name;
+
+        if( trim( $request->password) == ''  ){
+            $input = $request->except('password');
+
+        }else {
+
+            $input = $request->all();
+            $input['password'] = bcrypt( $request->password );
+        }
+
+        $data = $request->file( 'file' );
+
+        if ( $data ) {
+
+            $newPhoto = strtok( $userName,' ').'_'.$data->getClientOriginalName();
+            $photo =  Photo::find( $photo_ID );
+
+            if( $photo ) {
+
+                $oldPhoto = $photo->file;
+
+                if ( file_exists(public_path(). $oldPhoto))
+                    unlink(public_path().$oldPhoto );
+                $photo->update( [ 'file' =>$newPhoto ] );
+                $input['photo_id'] = $photo_ID;
+            } else {
+                $photo = Photo::create([ 'file' => $newPhoto ]);
+                $input['photo_id'] = $photo->id;
+            }
+
+            $data->move( 'images/users', $newPhoto);
+        }
+
+        $user->update( $input );
+        $request->session()->flash('user_updated', $userName.'\'s Profile has been Updated');
+
+//        return redirect('/admin/users');
+//
+        return redirect()->route('user.show', $id);
     }
 
     /**

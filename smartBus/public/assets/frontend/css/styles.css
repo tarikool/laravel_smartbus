@@ -34,6 +34,13 @@ html {
 	height: 100%;
 }
 
+.modal-open .container-fluid, .modal-open  .container {
+	-webkit-filter: blur(5px) grayscale(90%);
+}
+
+.modal-content{
+	background-color: initial;
+}
 
 textarea.moreinformation {
 	height: auto;

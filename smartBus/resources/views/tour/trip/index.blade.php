@@ -14,6 +14,7 @@
                 <tr>
                     <th class="serial">Ticket Id</th>
                     <th>User</th>
+                    <th>Naame</th>
                     <th>Bus</th>
                     <th>Payment</th>
                     <th>To</th>
@@ -23,8 +24,8 @@
                         <td>{{ $trip->ticket_id }}</td>
                         <td>
                             <img height="38" src="{{$trip->user->photo ? $trip->user->photo->file : 'http://placehold.it/400x400' }}" alt="">
-                            <p>{{' '. $trip->user->name }}</p>
                         </td>
+                        <td>{{' '. $trip->user->name }}</td>
                         <td>{{ $trip->bus->name }} at <small><a>{{ date('h:s A', strtotime($trip->bus->bus_time->schedule))}}</a></small></td>
                         <td>{{ $trip->no_of_ticket }} <small>ticket</small>- <a>{{ $trip->price }}</a> tk. <span class="label label-warning">pending</span></td>
                         <td>{{ $trip->dep_station->name }} - {{ $trip->des_station->name }}</td>

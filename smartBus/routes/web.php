@@ -13,8 +13,14 @@
 
 use App\Role;
 use App\User;
+use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
+//    $user = Auth::user();
+//    if ($user->isUser()){
+//        return $user;
+//    }
+//    return 'hola';
     return view('welcome');
 });
 
@@ -52,25 +58,38 @@ Route::get('/backup', function (){
     return view('layouts.backup');
 });
 
-
 Route::get( 'trip/frontend', ['as' => 'trip.frontend', 'uses' => 'BusTripController@frontend'] );
-Route::group(['middleware' => 'admin'], function() {
+
+Route::group(['middleware' => ['auth', 'admin'] ], function() {
 
     Route::resource('admin/users', 'AdminUsersController');
     Route::resource('admin/drivers', 'AdminDriversController');
-    Route::resource('user', 'UserController');
     Route::resource('admin/bus', 'AdminBusController');
     Route::resource('bus/routes', 'BusRouteController');
     Route::resource('bus/stations', 'BusStationController');
     Route::resource('bus/schedule', 'BusScheduleController');
-    Route::resource('bus/trip', 'BusTripController');
     Route::get( 'bus/route', ['as' => 'bus.check', 'uses' => 'AdminBusController@check'] );
 //    Route::get( 'trip/station', ['as' => 'trip.station', 'uses' => 'BusTripController@station'] );
+
+});
+
+Route::group(['middleware' => 'auth'], function() {
+    Route::resource('user', 'UserController');
+});
+
+
+Route::group(['middleware' => ['auth', 'user'] ], function() {
+
+    Route::resource('bus/trip', 'BusTripController');
     Route::get( 'trip/check', ['as' => 'trip.check', 'uses' => 'BusTripController@check'] );
     Route::get( 'trip/map', ['as' => 'trip.map', 'uses' => 'BusTripController@map'] );
     Route::get( 'trip/book', ['as' => 'trip.book', 'uses' => 'BusTripController@book'] );
 
 });
+
+
+
+
 
 
 

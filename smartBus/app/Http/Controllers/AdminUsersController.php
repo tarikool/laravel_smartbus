@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\UsersRequest;
+use App\Http\Requests\AdminRequest;
 use App\Photo;
 use App\Role;
 use App\User;
@@ -27,7 +27,7 @@ class AdminUsersController extends Controller
     }
 
 
-    public function store( UsersRequest $request)
+    public function store( AdminRequest $request)
     {
         $userName = $request->name;
 
@@ -59,69 +59,20 @@ class AdminUsersController extends Controller
     public function show($id)
     {
 
-//        $user = date('M. Y', strtotime(auth()->user()->created_at));
-//
-//        return $user;
-
-        $user = User::findOrFail($id);
-        return view('admin.users.show', compact('user'));
+//        $user = User::findOrFail($id);
+//        return view('admin.users.show', compact('user'));
     }
 
 
     public function edit($id)
     {
-        $user = User::findOrFail($id);
-        return view('admin.users.edit', compact('user'));
+
     }
 
 
     public function update( Request $request, $id)
     {
-        $this->validate($request, [
-            'name' => 'required',
-            'email' => 'required',
-        ]);
 
-        $user = User::findOrFail( $id );
-        $photo_ID = $user->photo_id;
-        $userName = $user->name;
-
-        if( trim( $request->password) == ''  ){
-            $input = $request->except('password');
-
-        }else {
-
-            $input = $request->all();
-            $input['password'] = bcrypt( $request->password );
-        }
-
-        $data = $request->file( 'file' );
-
-        if ( $data ) {
-
-            $newPhoto = strtok( $userName,' ').'_'.$data->getClientOriginalName();
-            $photo =  Photo::find( $photo_ID );
-
-            if( $photo ) {
-
-                $oldPhoto = $photo->file;
-
-                if ( file_exists(public_path(). $oldPhoto))
-                    unlink(public_path().$oldPhoto );
-                $photo->update( [ 'file' =>$newPhoto ] );
-                $input['photo_id'] = $photo_ID;
-            } else {
-                $photo = Photo::create([ 'file' => $newPhoto ]);
-                $input['photo_id'] = $photo->id;
-            }
-
-            $data->move( 'images/users', $newPhoto);
-        }
-
-        $user->update( $input );
-        $request->session()->flash('user_updated', $userName.'\'s Profile has been Updated');
-
-        return redirect('/admin/users');
     }
 
 

@@ -4,9 +4,8 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Session;
 
-class Admin
+class User
 {
     /**
      * Handle an incoming request.
@@ -17,16 +16,11 @@ class Admin
      */
     public function handle($request, Closure $next)
     {
+        if (Auth::user()->isUser()){
 
-            if(Auth::user()->isAdmin()){
+            return $next($request);
+        }
 
-                return $next($request);
-            }
-
-        Session::flash('restriction', ' You are not an Administrator. Users only roles with Administrator can view the page ');
-
-        return redirect('/');
+        return redirect('/')->with('restriction', ' You Don\'t Have Permission To View This Page ');
     }
-
-
 }
