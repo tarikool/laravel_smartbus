@@ -442,7 +442,7 @@
 <script src="{{ asset('assets/frontend/js/morphext.min.js') }}"></script> <!-- Morphtext rotating text in the header -->
 <script src="{{ asset('assets/frontend/js/validator.min.js') }}"></script> <!-- Validator.js - Bootstrap plugin that validates forms -->
 <script src="{{ asset('assets/frontend/js/scripts.js')}}"></script> <!-- Custom scripts -->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB5WQW9fdx6uzx85zLVwfq7mmHDTRmIYi8&libraries=places&callback=initMap"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places&callback=initMap"></script>
 
 <script>
     initMap();

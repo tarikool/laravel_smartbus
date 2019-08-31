@@ -372,7 +372,7 @@
 <script src="{{url('local/dist/js/adminlte.min.js') }}"></script>
 <script src="{{url('local/dist/js/main.js') }}"></script>
 <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB5WQW9fdx6uzx85zLVwfq7mmHDTRmIYi8&libraries=places">
+        src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
 </script>
 @yield('scripts')
 

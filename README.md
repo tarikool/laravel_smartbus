@@ -1,5 +1,10 @@
-email : admin1@email.com
+Admin: meike@email.com
+User: abigail@email.com
+Driver: driver@email.com
 pass : A12345
+
+
+
 1. download the zip file and put unzipped files into a new folder inside htdocs. [ eg. htdocs/smartbus/{your files}]
 2. open cmd in smartbus folder and run "composer update"
 3. create a database named "project_smartbus".

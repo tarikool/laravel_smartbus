@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 27, 2019 at 04:36 AM
+-- Generation Time: Aug 31, 2019 at 09:34 AM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.10
 
@@ -164,12 +164,11 @@ CREATE TABLE `bus_trips` (
 INSERT INTO `bus_trips` (`id`, `departure`, `destination`, `ticket_id`, `no_of_ticket`, `price`, `payment_status`, `expiration`, `user_id`, `route_id`, `bus_id`, `created_at`, `updated_at`) VALUES
 (1, '3', '1', 'VtSgp3lR', '3', 570, 0, 0, 1, 1, 1, '2019-08-26 19:23:48', '2019-08-26 19:23:48'),
 (2, '3', '1', 'PQQBGX2t', '3', 570, 0, 0, 1, 1, 1, '2019-08-26 19:24:20', '2019-08-26 19:24:20'),
-(3, '3', '1', 'wWQjtR7P', '3', 570, 0, 0, 1, 1, 1, '2019-08-26 19:30:36', '2019-08-26 19:30:36'),
-(4, '3', '1', 'Vb2dFSVO', '2', 380, 0, 0, 1, 1, 1, '2019-08-26 19:33:44', '2019-08-26 19:33:44'),
-(5, '4', '1', 'J1lsUMAc', '2', 520, 0, 0, 1, 1, 1, '2019-08-26 19:35:42', '2019-08-26 19:35:42'),
-(6, '4', '1', 'pKcHLLIL', '2', 520, 0, 0, 1, 1, 1, '2019-08-26 19:36:34', '2019-08-26 19:36:34'),
-(7, '4', '1', 'bT9XTM5z', '2', 520, 0, 0, 1, 1, 1, '2019-08-26 19:37:02', '2019-08-26 19:37:02'),
-(8, '4', '1', 'YSDlLH9B', '2', 520, 0, 0, 1, 1, 1, '2019-08-26 19:37:13', '2019-08-26 19:37:13');
+(4, '3', '1', 'Vb2dFSVO', '2', 380, 0, 0, 4, 1, 1, '2019-08-26 19:33:44', '2019-08-26 19:33:44'),
+(5, '4', '1', 'J1lsUMAc', '2', 520, 0, 0, 4, 1, 1, '2019-08-26 19:35:42', '2019-08-26 19:35:42'),
+(11, '2', '6', '4rHaI1hh', '5', 6300, 0, 0, 1, 2, 2, '2019-08-28 00:28:00', '2019-08-28 00:28:00'),
+(12, '3', '4', 'khRi3tUl', '4', 280, 0, 0, 1, 1, 1, '2019-08-28 05:10:41', '2019-08-28 05:10:41'),
+(13, '5', '2', 'h9aQ7Ssd', '3', 1440, 0, 0, 5, 2, 2, '2019-08-28 07:02:14', '2019-08-28 07:02:14');
 
 -- --------------------------------------------------------
 
@@ -225,6 +224,16 @@ CREATE TABLE `photos` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `photos`
+--
+
+INSERT INTO `photos` (`id`, `file`, `created_at`, `updated_at`) VALUES
+(1, 'Meike_64-1.jpg', '2019-08-27 08:59:23', '2019-08-28 07:43:09'),
+(2, 'Driver4_5.jpg', '2019-08-27 20:28:39', '2019-08-27 20:28:39'),
+(3, 'Gudrun_64-2.jpg', '2019-08-28 08:10:11', '2019-08-28 08:10:11'),
+(4, 'Abigail_3.jpg', '2019-08-28 08:49:00', '2019-08-28 08:49:00');
 
 -- --------------------------------------------------------
 
@@ -349,10 +358,12 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `is_active`, `role_id`, `photo_id`, `name`, `city`, `phone_number`, `email`, `balance`, `about`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 0, 1, NULL, 'Admin', NULL, NULL, 'admin1@email.com', 0, 'Something about yourself.', '$2y$10$wrG5RRFKuSXeoq3YKSiMIeYyI9.2Z7I6cDVX.xf1UcQv//0E0DoY6', NULL, '2019-08-26 19:18:31', '2019-08-26 19:39:41'),
-(2, 0, 3, NULL, 'Driver2', NULL, NULL, 'driver5@email.com', 0, NULL, 'driver124', NULL, NULL, NULL),
+(1, 0, 1, 1, 'Meike Dünhaupt', NULL, NULL, 'meike@email.com', 0, 'Something about yourself.', '$2y$10$wrG5RRFKuSXeoq3YKSiMIeYyI9.2Z7I6cDVX.xf1UcQv//0E0DoY6', 'fvaNBw8l5FYOobN1rZEYiNaSvnr8IMT7xaPZH7dTCzKeknN4enbGzsJSgB4t', '2019-08-26 19:18:31', '2019-08-28 07:42:55'),
+(2, 0, 2, NULL, 'Driver2', NULL, NULL, 'driver5@email.com', 0, NULL, 'driver124', NULL, NULL, NULL),
 (3, 0, 3, NULL, 'Driver3', NULL, NULL, 'driver6@email.com', 0, NULL, 'driver124', NULL, NULL, NULL),
-(4, 0, 3, NULL, 'Driver4', NULL, NULL, 'driver8@email.com', 0, NULL, 'driver124', NULL, NULL, NULL);
+(4, 0, 3, 2, 'Wendy Anderson', NULL, NULL, 'wendy@email.com', 0, 'Hi! This is Andy.', 'driver124', NULL, NULL, '2019-08-27 20:28:40'),
+(5, 0, 2, 4, 'Abigail  Mc\'Queen', NULL, NULL, 'abigail@email.com', 0, 'Hey! Its me Abigail. I\'m travelling North Dekota next week. Where you\'ll be at?', '$2y$10$QS.41kjwEiX1RJLgwp65YO1PYE5mOWkAOmCKGwv4tWoFJ81kprDem', 'NtLagyyoO4Rm4xHeHvqachYry67gqSrXWkTDW0T2e5FC1snjtHAN7qKQNvKd', '2019-08-28 06:44:53', '2019-08-28 08:49:01'),
+(6, 0, 3, 3, 'Gudrun Hansch', NULL, NULL, 'driver@email.com', 0, 'Its ur driver here', '$2y$10$.RecBsk0TC5WiukkOFOm4OZK9qdMeGzBHG742bFAMK0oOwVYqPz6y', 'YVM6wptM1V07jkbdYNbdAh0LsRvZRxTEsKUhc7KChwtCdp51M5VeJZqtozti', '2019-08-28 08:10:11', '2019-08-28 08:10:11');
 
 --
 -- Indexes for dumped tables
@@ -488,7 +499,7 @@ ALTER TABLE `bus_stations`
 -- AUTO_INCREMENT for table `bus_trips`
 --
 ALTER TABLE `bus_trips`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -500,7 +511,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `photos`
 --
 ALTER TABLE `photos`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `roles`
@@ -530,7 +541,7 @@ ALTER TABLE `trips`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables
