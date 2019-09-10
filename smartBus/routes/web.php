@@ -16,11 +16,15 @@ use App\User;
 use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
-//    $user = Auth::user();
-//    if ($user->isUser()){
-//        return $user;
-//    }
-//    return 'hola';
+
+$role = Role::find(1);
+    if( !$role ){
+        DB::table('roles')->insert([
+            ['name' => 'Administrator' ],
+            ['name' => 'User' ],
+            ['name' => 'Driver' ]
+        ]);
+    }
     return view('welcome');
 });
 

@@ -153,16 +153,7 @@
                             <ul class="treeview-menu">
                                 <li><a href="{{ route('users.index') }}"><i class="fa fa-star"></i> All Users</a></li>
                                 <li><a href="{{ route('users.create') }}"><i class="fa fa-user-plus"></i> Create User</a></li>
-                            </ul>
-                        </li>
-                        <li class="treeview">
-                            <a href="#">
-                                <i class="fa fa-cab"></i> <span>Drivers</span>
-                                <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li><a href="{{ route('drivers.index') }}"><i class="fa fa-star"></i> All Drivers</a></li>
-                                {{--                            <li><a href="{{ route('drivers.create') }}"><i class="fa fa-user-plus"></i> Create Driver</a></li>--}}
+                                <li><a href="{{ route('drivers.index') }}"><i class="fa fa-cab"></i> All Drivers</a></li>
                             </ul>
                         </li>
                         <li class="treeview">

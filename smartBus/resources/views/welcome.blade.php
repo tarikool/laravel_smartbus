@@ -113,6 +113,11 @@
             <div class="row">
                 <div class="col-md-3"></div>
                 <div class="col-md-6 col-md-offset-3">
+                    @if ($errors->has('email'))
+                        <p class="text-center" style="background: tomato;">
+                            {{ $errors->first('email') }}
+                        </p>
+                    @endif 
                     <strong><?=isset($_GET['message'])? 'Sorry!! you are not logged in. Please login first.' : '' ;?></strong>
                     <h1>Plan your next trip now!</h1>
                     <p class="lead">Save Money! Save the Environment!</p>
